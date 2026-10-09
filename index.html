@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV PAZ ANGOLA</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#281407">
+<link rel="apple-touch-icon" href="logo.png">
+<style>
+  body{margin:0;font-family:Arial;background:#281407;color:white}
+  .top{text-align:center;padding:30px 20px}
+  .top img{width:140px;border-radius:20px}
+  .container{padding:20px}
+  .card{background:white;color:#281407;padding:18px;border-radius:14px;margin-bottom:15px;text-align:center}
+  .btn{background:#281407;color:white;padding:14px;border:none;width:100%;border-radius:10px;font-weight:bold;font-size:16px}
+  #btn-instalar{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;padding:15px 30px;background:white;color:#281407;border-radius:30px;border:none;font-weight:bold;box-shadow:0 4px 20px rgba(0,0,0,0.6)}
+</style>
+</head>
+<body>
+<div class="top">
+  <img src="logo.png" alt="TV PAZ ANGOLA">
+  <h1>TV PAZ ANGOLA</h1>
+  <p>Levando a paz até você</p>
+</div>
+<div class="container">
+  <div class="card">
+    <h3>🔴 ASSISTIR AO VIVO</h3>
+    <p>Programação 24h no ar</p>
+    <button class="btn" onclick="alert('Coloca aqui teu link do YouTube/Facebook ao vivo')">ENTRAR AO VIVO</button>
+  </div>
+  <div class="card">
+    <h3>📲 Baixe nosso App</h3>
+    <p>Instale no seu telefone e assista mais rápido</p>
+  </div>
+</div>
+<button id="btn-instalar">📲 Instalar App TV PAZ</button>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+let promptInstalacao=null;const btn=document.getElementById('btn-instalar');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptInstalacao=e;btn.style.display='block'});
+btn.addEventListener('click',async()=>{if(!promptInstalacao)return;promptInstalacao.prompt();const r=await promptInstalacao.userChoice;if(r.outcome==='accepted')btn.style.display='none';promptInstalacao=null});
+</script>
+</body>
+</html>
