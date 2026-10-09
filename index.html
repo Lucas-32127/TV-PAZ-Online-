@@ -6,60 +6,60 @@
 <title>TV PAZ ANGOLA - Ao Vivo</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#281407">
-<link rel="apple-touch-icon" href="logo.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <style>
-  body{margin:0;font-family:Arial;background:#281407;color:white}
-  .top{text-align:center;padding:20px}
-  .top img{width:110px;border-radius:15px}
-  .live-box{background:black;padding:0;border-radius:14px;overflow:hidden;margin:15px}
-  .live-box iframe{width:100%;height:220px;border:none}
-  .live-info{background:#e63946;padding:8px;text-align:center;font-weight:bold;font-size:13px}
-  .container{padding:0 15px 80px 15px}
-  .card{background:white;color:#281407;padding:16px;border-radius:14px;margin-bottom:12px}
-  .btn{background:#281407;color:white;padding:13px;border:none;width:100%;border-radius:10px;font-weight:bold}
-  .btn-whats{background:#25D366}
-  #btn-instalar{display:none;position:fixed;bottom:15px;left:50%;transform:translateX(-50%);z-index:9999;padding:14px 28px;background:white;color:#281407;border-radius:30px;border:none;font-weight:bold;box-shadow:0 5px 25px rgba(0,0,0,0.6)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,Arial;background:#281407;color:#fff;min-height:100vh}
+  .header{text-align:center;padding:25px 15px 15px}
+  .logo-box{width:115px;height:115px;background:#fff;border-radius:24px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#281407;font-weight:900;line-height:1;font-size:26px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+  .live-wrap{margin:15px;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .live-badge{background:#e63946;color:#fff;text-align:center;padding:8px;font-weight:800;font-size:13px;letter-spacing:1px}
+  .live-wrap iframe{width:100%;height:215px;border:0;display:block}
+  .content{padding:15px 15px 90px}
+  .card{background:#fff;color:#281407;border-radius:16px;padding:16px;margin-bottom:12px}
+  .card h3{margin-bottom:6px}
+  .btn{width:100%;border:0;border-radius:12px;padding:14px;font-weight:800;font-size:15px;cursor:pointer}
+  .btn-dark{background:#281407;color:#fff;margin-top:10px}
+  .btn-whats{background:#25D366;color:#fff}
+  #btn-instalar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:999;background:#fff;color:#281407;border:0;padding:15px 28px;border-radius:30px;font-weight:900;box-shadow:0 8px 25px rgba(0,0,0,.5);display:none}
 </style>
 </head>
 <body>
 
-<div class="top">
-  <img src="logo.png">
-  <h2 style="margin:10px 0 0 0">TV PAZ ANGOLA</h2>
-  <p style="margin:5px 0;font-size:13px;opacity:0.8">Levando a paz até você</p>
+<div class="header">
+  <div class="logo-box">TV<br>PAZ</div>
+  <h2>TV PAZ ANGOLA</h2>
+  <p style="opacity:.75;font-size:13px;margin-top:4px">Levando a paz até você • Ao Vivo 24h</p>
 </div>
 
-<!-- PLAYER AO VIVO -->
-<div class="live-box">
-  <div class="live-info">🔴 AO VIVO AGORA</div>
-  <!-- TROCA O SRC PELO TEU LINK -->
-  <iframe src="https://www.youtube.com/embed/live_stream?channel=COLOCA_O_ID_DO_CANAL_AQUI" allowfullscreen></iframe>
+<div class="live-wrap">
+  <div class="live-badge">🔴 AO VIVO AGORA</div>
+  <!-- TROCA o ID do video abaixo pelo ID do culto ao vivo da TV PAZ -->
+  <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" allowfullscreen allow="autoplay; encrypted-media"></iframe>
 </div>
 
-<div class="container">
+<div class="content">
   <div class="card">
-    <h3 style="margin:0 0 8px 0">📺 Programação</h3>
-    <p style="margin:0;font-size:14px">Cultos, louvores e mensagens de paz 24h por dia</p>
+    <h3>📺 Programação</h3>
+    <p style="font-size:14px;line-height:1.4">Cultos, louvores, orações e mensagens de paz todos os dias. Fique ligado no ao vivo.</p>
+    <button class="btn btn-dark" onclick="document.querySelector('.live-wrap').scrollIntoView({behavior:'smooth'})">ASSISTIR AGORA</button>
   </div>
 
   <div class="card">
-    <h3 style="margin:0 0 8px 0">Fale Conosco</h3>
-    <button class="btn btn-whats" onclick="window.open('https://wa.me/244900000000?text=Paz! Vim pelo App da TV PAZ ANGOLA','_blank')">FALAR NO WHATSAPP</button>
-  </div>
-
-  <div class="card" style="text-align:center;font-size:12px;opacity:0.7">
-    App Oficial TV PAZ ANGOLA © 2026
+    <h3>💬 Fale Conosco</h3>
+    <p style="font-size:14px;margin-bottom:10px">Envie seu pedido de oração</p>
+    <button class="btn btn-whats" onclick="window.open('https://wa.me/244900000000?text=Olá TV PAZ ANGOLA! Vim pelo APP','_blank')">FALAR NO WHATSAPP</button>
   </div>
 </div>
 
-<button id="btn-instalar">📲 Instalar App TV PAZ</button>
+<button id="btn-instalar">📲 Instalar APP</button>
 
 <script>
+// PWA
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
-let promptInstalacao=null;const btn=document.getElementById('btn-instalar');
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptInstalacao=e;btn.style.display='block'});
-btn.addEventListener('click',async()=>{if(!promptInstalacao)return;promptInstalacao.prompt();const r=await promptInstalacao.userChoice;if(r.outcome==='accepted')btn.style.display='none';promptInstalacao=null});
+let deferredPrompt; const btnInst=document.getElementById('btn-instalar');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;btnInst.style.display='block'});
+btnInst.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();const c=await deferredPrompt.userChoice;if(c.outcome==='accepted')btnInst.style.display='none';deferredPrompt=null});
 </script>
-
 </body>
 </html>
