@@ -1,19 +1,14 @@
 {
-  "name": "TV PAZ ANGOLA - Oficial",
+  "name": "TV PAZ ANGOLA",
   "short_name": "TV PAZ",
-  "description": "Assista a TV PAZ Angola ao vivo no nosso App oficial",
-  "start_url": "./index.html",
+  "description": "TV PAZ ANGOLA - Ao Vivo 24h",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#281407",
   "theme_color": "#281407",
   "icons": [
     {
-      "src": "./logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "./logo.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/3048/3048122.png",
       "sizes": "512x512",
       "type": "image/png"
     }
